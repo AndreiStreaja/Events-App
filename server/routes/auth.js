@@ -45,7 +45,7 @@ router.post('/login',  async (req, res) => {
           return res.status(400).json({ message: 'Email sau parolă incorectă.' });
       }
 
-      if (user.parola !== parola) { // Fără bcrypt
+      if (user.parola !== parola) { 
           return res.status(400).json({ message: 'Email sau parolă incorectă.' });
       }
       const token = jwt.sign({ userId: user.user_id, rol: user.rol, email:user.email}, process.env.JWT_SECRET, { expiresIn: '5h' });
